@@ -145,7 +145,7 @@
   .menu-list a.active .dot{background:#fff}
 
   .content{padding:30px 34px 44px}
-  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(238px,1fr)); gap:24px; max-width:900px}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(238px,340px)); gap:24px; max-width:900px; justify-content:start}
   .card{
     background:#fff; border:1px solid var(--line); border-radius:6px; overflow:hidden;
     box-shadow:0 2px 10px rgba(22,32,46,.07); transition:.18s; display:flex;
@@ -163,6 +163,7 @@
   .card.c1 .label{background:#33414f}
   .card.c2 .label{background:#2b8a8a}
   .card.c3 .label{background:#c0392b}
+  .card.c4 .label{background:var(--blue)}
 
   .painel-note{
     margin-top:34px; background:#fff; border:1px solid var(--line); border-left:5px solid var(--blue);
@@ -313,17 +314,21 @@
     </section>
 
     <section class="cards" id="cards">
-      <a class="card c1" href="#">
+      <a class="card c1" id="card-linguagens" href="#">
         <div class="art">&#128218;</div>
         <div class="label">LINGUAGENS</div>
       </a>
-      <a class="card c2" href="#">
+      <a class="card c2" id="card-natureza" href="#">
         <div class="art">&#129514;</div>
         <div class="label">NATUREZA</div>
       </a>
-      <a class="card c3" href="#">
+      <a class="card c3" id="card-humanas" href="#">
         <div class="art">&#127757;</div>
         <div class="label">HUMANAS</div>
+      </a>
+      <a class="card c4" id="card-cronograma" href="#" hidden>
+        <div class="art">&#128197;</div>
+        <div class="label">CRONOGRAMA</div>
       </a>
     </section>
 
@@ -353,20 +358,57 @@
     });
   });
 
+  var cardLing = document.getElementById('card-linguagens');
+  var cardNat  = document.getElementById('card-natureza');
+  var cardHum  = document.getElementById('card-humanas');
+  var cardCron = document.getElementById('card-cronograma');
+
+  function cartoesPadrao(){
+    cardLing.hidden = false;
+    cardNat.hidden = false;
+    cardHum.hidden = false;
+    cardCron.hidden = true;
+  }
+
   function abrirCrono(ev){
     if (ev) ev.preventDefault();
     cards.hidden = true;
     painel.hidden = false;
     painel.scrollIntoView({behavior:'smooth', block:'start'});
   }
+
   function fecharCrono(){
     painel.hidden = true;
     cards.hidden = false;
+    cartoesPadrao();
+  }
+
+  function vistaMatematica(ev){
+    if (ev) ev.preventDefault();
+    painel.hidden = true;
+    cards.hidden = false;
+    cardLing.hidden = true;
+    cardNat.hidden = true;
+    cardHum.hidden = true;
+    cardCron.hidden = false;
   }
 
   var matematica = document.querySelector('[data-materia="matematica"]');
-  if (matematica) matematica.addEventListener('click', abrirCrono);
+  if (matematica){
+    matematica.addEventListener('click', vistaMatematica);
+  }
+  cardCron.addEventListener('click', abrirCrono);
   document.getElementById('voltar-crono').addEventListener('click', fecharCrono);
+
+  // qualquer outra matéria volta à faixa original
+  document.querySelectorAll('.menu-list a').forEach(function(a){
+    if (a === matematica) return;
+    a.addEventListener('click', function(){
+      painel.hidden = true;
+      cards.hidden = false;
+      cartoesPadrao();
+    });
+  });
 })();
 </script>
 </body>
