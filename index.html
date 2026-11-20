@@ -164,6 +164,7 @@
   .card.c2 .label{background:#2b8a8a}
   .card.c3 .label{background:#c0392b}
   .card.c4 .label{background:var(--blue)}
+  .card.c5 .label{background:#7a4b00}
 
   .painel-note{
     margin-top:34px; background:#fff; border:1px solid var(--line); border-left:5px solid var(--blue);
@@ -221,7 +222,7 @@
     .menu-list a .dot{display:none}
     .content{padding:22px 16px 34px}
   }
-  @media (max-width:1080px){
+  @media (max-width:1240px){
     .brand{padding:0}
     .site-header{flex-direction:column; gap:14px}
     .header-right{position:static; transform:none; justify-content:center}
@@ -333,6 +334,10 @@
         <div class="art">&#128197;</div>
         <div class="label">CRONOGRAMA</div>
       </a>
+      <a class="card c5" id="card-simulado" href="simulado-poliedro.html" hidden>
+        <div class="art">&#128221;</div>
+        <div class="label">SIMULADO POLIEDRO</div>
+      </a>
     </section>
 
     <div class="painel-note" id="sobre">
@@ -358,6 +363,7 @@ const CRONOGRAMAS = {"matematica": {"titulo": "Cronograma de Matemática", "desc
   var cardNat  = document.getElementById('card-natureza');
   var cardHum  = document.getElementById('card-humanas');
   var cardCron = document.getElementById('card-cronograma');
+  var cardSim = document.getElementById('card-simulado');
   var titulo = document.getElementById('crono-titulo');
   var desc = document.getElementById('crono-desc');
   var corpo = document.querySelector('#painel-crono tbody');
@@ -368,6 +374,7 @@ const CRONOGRAMAS = {"matematica": {"titulo": "Cronograma de Matemática", "desc
     cardNat.hidden = false;
     cardHum.hidden = false;
     cardCron.hidden = true;
+    cardSim.hidden = true;
   }
 
   function preencher(slug){
@@ -413,6 +420,7 @@ const CRONOGRAMAS = {"matematica": {"titulo": "Cronograma de Matemática", "desc
       cardCron.hidden = false;
       cardCron.querySelector('.label').textContent =
         (atual === 'simulados') ? 'CALENDÁRIO' : 'CRONOGRAMA';
+      cardSim.hidden = (atual !== 'simulados');
     });
   });
 
