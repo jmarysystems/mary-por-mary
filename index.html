@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mary por Mary — Perguntas e respostas</title>
+<meta name="description" content="Mary por Mary: perguntas e respostas de Português, Matemática, Física, Química, Biologia, História, Geografia, Filosofia e Sociologia.">
+<style>
+  :root{
+    --ink:#16202e;
+    --navy:#1b2a41;
+    --navy-2:#22344f;
+    --blue:#2f6fed;
+    --blue-soft:#e8f0fe;
+    --green:#39ff88;
+    --red:#e03131;
+    --line:#dfe4ec;
+    --muted:#66707f;
+    --bg:#f2f4f8;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased;
+  }
+  a{text-decoration:none;color:inherit}
+
+  /* ---------- cabeçalho ---------- */
+  .site-header{
+    position:relative; overflow:hidden; background:#04070c; color:#fff;
+    padding:18px 26px 16px; min-height:132px;
+    display:flex; align-items:center; gap:22px; flex-wrap:wrap;
+  }
+  #matrix{position:absolute; inset:0; width:100%; height:100%; opacity:.85}
+  .brand{position:relative; z-index:2; display:flex; align-items:center; gap:16px; flex:1 1 320px}
+  .logo{
+    width:74px; height:74px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #ffffff 0%, #f1f3f7 55%, #d6dbe6 100%);
+    display:grid; place-items:center; flex:0 0 auto;
+    box-shadow:0 0 0 4px rgba(255,255,255,.18), 0 6px 18px rgba(0,0,0,.45);
+  }
+  .logo span{
+    font-weight:800; font-size:30px; letter-spacing:-1px;
+    background:linear-gradient(135deg,#1b2a41,#2f6fed);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .brand-text h1{
+    margin:0; font-size:38px; line-height:1.02; font-weight:800; letter-spacing:-.5px;
+    text-shadow:0 2px 12px rgba(0,0,0,.6);
+  }
+  .brand-text h1 em{font-style:normal; color:var(--green); font-weight:700}
+  .tagline{
+    display:inline-flex; align-items:center; gap:8px; margin-top:9px;
+    background:var(--red); color:#fff; font-size:13.5px; font-weight:700;
+    padding:5px 13px; border-radius:5px; letter-spacing:.2px;
+    box-shadow:0 3px 10px rgba(224,49,49,.35);
+  }
+  .header-right{
+    position:relative; z-index:2; display:flex; align-items:center; gap:14px;
+    flex-wrap:wrap; justify-content:flex-end;
+  }
+  .phone{
+    display:inline-flex; align-items:center; gap:10px;
+    background:#fff; color:#0d1520; border-radius:10px;
+    padding:8px 10px 8px 12px; font-weight:800; font-size:22px; letter-spacing:.4px;
+    box-shadow:0 4px 14px rgba(0,0,0,.35);
+  }
+  .phone .ico{
+    width:34px; height:34px; border-radius:50%; background:#111a26; color:#fff;
+    display:grid; place-items:center; font-size:15px;
+  }
+  .phone small{font-size:12px; font-weight:700; color:#5b6575; margin-right:2px}
+  .socials{display:flex; gap:8px}
+  .socials a{
+    width:38px; height:38px; border-radius:50%; background:#fff; color:#2b3444;
+    display:grid; place-items:center; font-weight:800; font-size:16px;
+    box-shadow:0 3px 10px rgba(0,0,0,.3); transition:.15s;
+  }
+  .socials a:hover{transform:translateY(-2px); color:var(--blue)}
+  .socials svg{width:19px; height:19px; fill:currentColor}
+
+  .dashed{
+    height:0; border-top:4px dashed #f2b705; background:#04070c;
+  }
+
+  /* ---------- faixa de navegação ---------- */
+  .topnav{
+    background:var(--navy-2); color:#cfd8e6; display:flex; align-items:center;
+    gap:4px; padding:0 26px; box-shadow:inset 0 -1px 0 rgba(255,255,255,.06);
+  }
+  .topnav a{
+    display:flex; align-items:center; gap:9px; padding:13px 18px;
+    font-size:15.5px; font-weight:600; border-right:1px solid rgba(255,255,255,.07);
+    transition:.15s;
+  }
+  .topnav a:first-child{padding-left:0}
+  .topnav a:hover, .topnav a.on{color:#fff; background:rgba(255,255,255,.06)}
+  .topnav .home-ico{
+    width:26px; height:26px; border-radius:6px; background:#e9edf5; color:#1b2a41;
+    display:grid; place-items:center; font-size:14px;
+  }
+
+  /* ---------- layout ---------- */
+  .layout{display:grid; grid-template-columns:262px 1fr; min-height:calc(100vh - 214px)}
+  .sidebar{
+    background:var(--navy); color:#dbe3f0; padding:20px 16px 28px;
+  }
+  .menu-title{
+    display:flex; align-items:center; gap:10px; color:#fff; font-weight:800;
+    font-size:16.5px; padding:0 8px 16px;
+  }
+  .menu-title .badge{
+    width:30px; height:30px; border-radius:8px; background:var(--blue);
+    display:grid; place-items:center; font-size:15px;
+  }
+  .menu-list{display:flex; flex-direction:column; gap:3px}
+  .menu-list a{
+    display:flex; align-items:center; gap:11px; padding:11px 14px; border-radius:9px;
+    font-size:15.5px; font-weight:600; color:#c9d4e4; transition:.13s;
+  }
+  .menu-list a .dot{
+    width:9px; height:9px; border-radius:50%; background:#5b6b85; flex:0 0 auto;
+    transition:.13s;
+  }
+  .menu-list a:hover{background:rgba(255,255,255,.07); color:#fff}
+  .menu-list a.active{
+    background:var(--blue); color:#fff; box-shadow:0 6px 16px rgba(47,111,237,.4);
+  }
+  .menu-list a.active .dot{background:#fff}
+
+  .content{padding:30px 34px 44px}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:24px; max-width:900px}
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:6px; overflow:hidden;
+    box-shadow:0 2px 10px rgba(22,32,46,.07); transition:.18s; display:flex;
+    flex-direction:column;
+  }
+  .card:hover{transform:translateY(-3px); box-shadow:0 12px 26px rgba(22,32,46,.14)}
+  .card .art{
+    height:150px; display:grid; place-items:center; font-size:62px;
+    background:linear-gradient(180deg,#fbfcfe,#f2f5fa);
+  }
+  .card .label{
+    padding:15px 12px; text-align:center; color:#fff; font-weight:800;
+    font-size:16px; letter-spacing:.4px;
+  }
+  .card.c1 .label{background:#33414f}
+  .card.c2 .label{background:#2b8a8a}
+  .card.c3 .label{background:#c0392b}
+
+  .painel-note{
+    margin-top:34px; background:#fff; border:1px solid var(--line); border-left:5px solid var(--blue);
+    border-radius:8px; padding:18px 20px; max-width:900px;
+  }
+  .painel-note h2{margin:0 0 8px; font-size:17px; color:var(--navy)}
+  .painel-note p{margin:0; color:var(--muted); font-size:14.5px; line-height:1.6}
+
+  footer{
+    background:#0d1622; color:#8b97a8; font-size:13px; padding:16px 26px;
+    display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+  }
+  footer strong{color:#cfd8e6}
+
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr}
+    .sidebar{padding:14px 12px 18px}
+    .menu-list{flex-direction:row; overflow-x:auto; gap:8px; padding-bottom:4px}
+    .menu-list a{white-space:nowrap; background:rgba(255,255,255,.05); padding:9px 13px}
+    .menu-list a .dot{display:none}
+    .content{padding:22px 16px 34px}
+  }
+  @media (max-width:620px){
+    .site-header{padding:16px 16px 14px}
+    .brand-text h1{font-size:29px}
+    .phone{font-size:18px}
+    .card .art{height:120px; font-size:50px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    #matrix{display:none}
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <canvas id="matrix" aria-hidden="true"></canvas>
+
+  <div class="brand">
+    <div class="logo"><span>M</span></div>
+    <div class="brand-text">
+      <h1>Mary <em>por</em> Mary</h1>
+      <div class="tagline">Perguntas e respostas</div>
+    </div>
+  </div>
+
+  <div class="header-right">
+    <a class="phone" href="tel:+5585981647015" aria-label="Telefone 85 98164-7015">
+      <span class="ico">&#9742;</span>
+      <span><small>(85)</small> 98164-7015</span>
+    </a>
+    <div class="socials">
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+      <a href="#" aria-label="Google Plus">G+</a>
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.4A2.9 2.9 0 1 1 14.9 12 2.9 2.9 0 0 1 12 14.9zM17 3H7a4 4 0 0 0-4 4v10a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7a4 4 0 0 0-4-4zm2.3 14.1a2.3 2.3 0 0 1-2.3 2.3H7a2.3 2.3 0 0 1-2.3-2.3V7A2.3 2.3 0 0 1 7 4.7h10A2.3 2.3 0 0 1 19.3 7zM17.8 6.2a1 1 0 1 1-1-1 1 1 0 0 1 1 1z"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<div class="dashed"></div>
+
+<nav class="topnav">
+  <a href="#" class="on"><span class="home-ico">&#8962;</span> Home</a>
+  <a href="#materias">Matérias</a>
+  <a href="#sobre">Sobre</a>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="menu-title"><span class="badge">&#9776;</span> Menu Mary por Mary</div>
+    <div class="menu-list" id="materias">
+      <a href="#" class="active"><span class="dot"></span> Português</a>
+      <a href="#"><span class="dot"></span> Matemática</a>
+      <a href="#"><span class="dot"></span> Física</a>
+      <a href="#"><span class="dot"></span> Química</a>
+      <a href="#"><span class="dot"></span> Biologia</a>
+      <a href="#"><span class="dot"></span> História</a>
+      <a href="#"><span class="dot"></span> Geografia</a>
+      <a href="#"><span class="dot"></span> Filosofia</a>
+      <a href="#"><span class="dot"></span> Sociologia</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <section class="cards">
+      <a class="card c1" href="#">
+        <div class="art">&#128218;</div>
+        <div class="label">LINGUAGENS</div>
+      </a>
+      <a class="card c2" href="#">
+        <div class="art">&#129514;</div>
+        <div class="label">NATUREZA</div>
+      </a>
+      <a class="card c3" href="#">
+        <div class="art">&#127757;</div>
+        <div class="label">HUMANAS</div>
+      </a>
+    </section>
+
+    <div class="painel-note" id="sobre">
+      <h2>Bem-vindo ao Mary por Mary</h2>
+      <p>Um espaço de perguntas e respostas para estudar as nove matérias do ensino médio.
+         Escolha uma matéria no menu à esquerda para começar.</p>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <span>&copy; 2026 <strong>Mary por Mary</strong> — Perguntas e respostas</span>
+  <span>(85) 98164-7015</span>
+</footer>
+
+<script>
+(function(){
+  var canvas = document.getElementById('matrix');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789MaryPor';
+  var cols = 0, drops = [], size = 14;
+
+  function resize(){
+    var dpr = window.devicePixelRatio || 1;
+    var w = canvas.clientWidth, h = canvas.clientHeight || 140;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cols = Math.max(1, Math.floor(w / size));
+    var rows = Math.ceil(h / size);
+    drops = [];
+    for (var i = 0; i < cols; i++) drops.push(Math.random() * rows);
+    ctx.fillStyle = '#04070c';
+    ctx.fillRect(0, 0, w, h);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  var last = 0;
+  function draw(t){
+    if (t - last > 45){
+      last = t;
+      ctx.fillStyle = 'rgba(4, 7, 12, 0.10)';
+      ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+      ctx.font = size + 'px monospace';
+      for (var i = 0; i < cols; i++){
+        var ch = chars.charAt(Math.floor(Math.random() * chars.length));
+        var x = i * size, y = drops[i] * size;
+        ctx.fillStyle = Math.random() > 0.985 ? '#b6ffd2' : '#39ff88';
+        ctx.fillText(ch, x, y);
+        if (y > canvas.clientHeight && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+
+  document.querySelectorAll('.menu-list a').forEach(function(a){
+    a.addEventListener('click', function(){
+      document.querySelectorAll('.menu-list a').forEach(function(x){ x.classList.remove('active'); });
+      a.classList.add('active');
+    });
+  });
+})();
+</script>
+</body>
+</html>
