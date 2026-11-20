@@ -265,15 +265,15 @@
   <aside class="sidebar">
     <div class="menu-title"><span class="badge">&#9776;</span> Menu Mary por Mary</div>
     <div class="menu-list" id="materias">
-      <a href="#" class="active"><span class="dot"></span> Português</a>
+      <a href="#" data-materia="portugues"><span class="dot"></span> Português</a>
       <a href="#" data-materia="matematica"><span class="dot"></span> Matemática</a>
-      <a href="#"><span class="dot"></span> Física</a>
-      <a href="#"><span class="dot"></span> Química</a>
-      <a href="#"><span class="dot"></span> Biologia</a>
-      <a href="#"><span class="dot"></span> História</a>
-      <a href="#"><span class="dot"></span> Geografia</a>
-      <a href="#"><span class="dot"></span> Filosofia</a>
-      <a href="#"><span class="dot"></span> Sociologia</a>
+      <a href="#" data-materia="fisica"><span class="dot"></span> Física</a>
+      <a href="#" data-materia="quimica"><span class="dot"></span> Química</a>
+      <a href="#" data-materia="biologia"><span class="dot"></span> Biologia</a>
+      <a href="#" data-materia="historia"><span class="dot"></span> História</a>
+      <a href="#" data-materia="geografia"><span class="dot"></span> Geografia</a>
+      <a href="#" data-materia="filosofia"><span class="dot"></span> Filosofia</a>
+      <a href="#" data-materia="sociologia"><span class="dot"></span> Sociologia</a>
     </div>
   </aside>
 
@@ -281,35 +281,13 @@
 
     <section class="crono-panel" id="painel-crono" hidden>
       <span class="voltar" id="voltar-crono">&#8592; voltar</span>
-      <h2>Cronograma de Matemática</h2>
-      <p>7 h por semana: três blocos de 2 h (segunda, terça e quinta) mais 1 h de questões na segunda.
-         Os tópicos seguem os ciclos do plano, do zero ao nível de prova.</p>
+      <h2 id="crono-titulo">Cronograma</h2>
+      <p id="crono-desc"></p>
       <table class="crono">
         <thead>
           <tr><th>Ciclo</th><th>Período</th><th>O que estudar</th></tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>C0</td><td>23/11 a 20/12/2026</td>
-            <td>Fundamentos: conjuntos, frações e porcentagem, álgebra elementar, potências e raízes, sistemas.</td>
-          </tr>
-          <tr>
-            <td>C1</td><td>21/12/2026 a 28/02/2027</td>
-            <td>Funções (afim, quadrática, modular, exponencial e log), progressões, trigonometria, geometria plana.</td>
-          </tr>
-          <tr>
-            <td>C2</td><td>01/03 a 30/06/2027</td>
-            <td>Geometria espacial e analítica, análise combinatória.</td>
-          </tr>
-          <tr>
-            <td>C3</td><td>01/07 a 30/09/2027</td>
-            <td>Probabilidade, estatística, matemática financeira, polinômios, matrizes e sistemas lineares.</td>
-          </tr>
-          <tr>
-            <td>C4</td><td>01/10 a 07/11/2027</td>
-            <td>Revisão pelo caderno de erros e provas FUVEST completas, cronometradas.</td>
-          </tr>
-        </tbody>
+        <tbody></tbody>
       </table>
     </section>
 
@@ -346,22 +324,19 @@
 </footer>
 
 <script>
+const CRONOGRAMAS = {"matematica": {"titulo": "Cronograma de Matemática", "desc": "7 h por semana: segunda, terça e quinta (3 blocos de 2 h), mais 1 h de questões.", "linhas": [{"ciclo": "C0", "periodo": "23/11/2026 a 20/12/2026", "oque": "Conjuntos numéricos e operações; Frações, decimais e porcentagem; Álgebra elementar; Potências, raízes e radicais; …."}, {"ciclo": "C1", "periodo": "21/12/2026 a 28/02/2027", "oque": "Função afim; Função quadrática; Função modular; Função exponencial e logarítmica; …."}, {"ciclo": "C2", "periodo": "01/03/2027 a 30/06/2027", "oque": "Trigonometria no ciclo; Geometria plana II; Geometria espacial I; Geometria espacial II; …."}, {"ciclo": "C3", "periodo": "01/07/2027 a 30/09/2027", "oque": "Probabilidade; Estatística; Matemática financeira; Funções compostas, inversas e polinômios; …."}, {"ciclo": "C4", "periodo": "01/10/2027 a 07/11/2027", "oque": "Revisão pelo caderno de erros, provas completas e discursivas cronometradas."}]}, "biologia": {"titulo": "Cronograma de Biologia", "desc": "6 h por semana: segunda, quarta e sexta (3 blocos de 2 h).", "linhas": [{"ciclo": "C0", "periodo": "23/11/2026 a 20/12/2026", "oque": "Método científico e organização da vida; Química da vida."}, {"ciclo": "C1", "periodo": "21/12/2026 a 28/02/2027", "oque": "Citologia I; Citologia II — metabolismo; Núcleo e ácidos nucleicos; Divisão celular; …."}, {"ciclo": "C2", "periodo": "01/03/2027 a 30/06/2027", "oque": "Genética pós-mendeliana; Genética molecular e mutações; Biotecnologia; Evolução; …."}, {"ciclo": "C3", "periodo": "01/07/2027 a 30/09/2027", "oque": "Botânica II — fisiologia e reprodução; Zoologia — vertebrados e embriologia; Histologia animal; Fisiologia humana I; …."}, {"ciclo": "C4", "periodo": "01/10/2027 a 07/11/2027", "oque": "Revisão pelo caderno de erros, provas completas e discursivas cronometradas."}]}, "quimica": {"titulo": "Cronograma de Química", "desc": "5 h por semana: segunda e quarta (2 blocos de 2 h), mais 1 h de questões.", "linhas": [{"ciclo": "C0", "periodo": "23/11/2026 a 20/12/2026", "oque": "Matéria e transformações; Modelos atômicos."}, {"ciclo": "C1", "periodo": "21/12/2026 a 28/02/2027", "oque": "Tabela periódica; Ligações químicas; Forças intermoleculares; Funções inorgânicas; …."}, {"ciclo": "C2", "periodo": "01/03/2027 a 30/06/2027", "oque": "Gases; Soluções; Termoquímica; Cinética química; …."}, {"ciclo": "C3", "periodo": "01/07/2027 a 30/09/2027", "oque": "Eletroquímica; Isomeria; Reações orgânicas I; Reações orgânicas II; …."}, {"ciclo": "C4", "periodo": "01/10/2027 a 07/11/2027", "oque": "Revisão pelo caderno de erros, provas completas e discursivas cronometradas."}]}, "fisica": {"titulo": "Cronograma de Física", "desc": "5 h por semana: terça e quinta (2 blocos de 2 h), mais 1 h de questões.", "linhas": [{"ciclo": "C0", "periodo": "23/11/2026 a 20/12/2026", "oque": "Grandezas e unidades; Vetores."}, {"ciclo": "C1", "periodo": "21/12/2026 a 28/02/2027", "oque": "Cinemática; Movimento em duas dimensões; Leis de Newton; Forças especiais."}, {"ciclo": "C2", "periodo": "01/03/2027 a 30/06/2027", "oque": "Trabalho e energia; Impulso e quantidade de movimento; Estática; Hidrostática; …."}, {"ciclo": "C3", "periodo": "01/07/2027 a 30/09/2027", "oque": "Óptica geométrica; Instrumentos ópticos e visão; Ondulatória; Óptica física; …."}, {"ciclo": "C4", "periodo": "01/10/2027 a 07/11/2027", "oque": "Revisão pelo caderno de erros, provas completas e discursivas cronometradas."}]}, "geografia": {"titulo": "Cronograma de Geografia", "desc": "2,5 h por semana: um bloco de 2 h na terça.", "linhas": [{"ciclo": "C1", "periodo": "21/12/2026 a 28/02/2027", "oque": "Cartografia; Geopolítica e ordem mundial; Climatologia."}, {"ciclo": "C2", "periodo": "01/03/2027 a 30/06/2027", "oque": "Domínios morfoclimáticos e biomas; Geomorfologia e solos; Hidrografia e recursos hídricos; Questão ambiental; …."}, {"ciclo": "C3", "periodo": "01/07/2027 a 30/09/2027", "oque": "Indústria; Energia; Urbanização; População e migrações; …."}, {"ciclo": "C4", "periodo": "01/10/2027 a 07/11/2027", "oque": "Revisão pelo caderno de erros, provas completas e discursivas cronometradas."}]}, "historia": {"titulo": "Cronograma de História", "desc": "2,5 h por semana: um bloco de 2 h na quarta.", "linhas": [{"ciclo": "C1", "periodo": "21/12/2026 a 28/02/2027", "oque": "Pré-história e primeiras civilizações; Mundo antigo; Idade Média; América pré-colombiana; …."}, {"ciclo": "C2", "periodo": "01/03/2027 a 30/06/2027", "oque": "Colonização da América; Brasil colonial; Revoluções; Independências na América; …."}, {"ciclo": "C3", "periodo": "01/07/2027 a 30/09/2027", "oque": "República Velha; Imperialismo e 1ª Guerra; Revolução Russa e entreguerras; Segunda Guerra Mundial; …."}, {"ciclo": "C4", "periodo": "01/10/2027 a 07/11/2027", "oque": "Revisão pelo caderno de erros, provas completas e discursivas cronometradas."}]}, "portugues": {"titulo": "Cronograma de Português", "desc": "3 h por semana: um bloco de 2 h na quinta, mais 1 h de questões.", "linhas": [{"ciclo": "C1", "periodo": "21/12/2026 a 28/02/2027", "oque": "Leitura e interpretação; Funções da linguagem; Variação linguística; Coesão e coerência."}, {"ciclo": "C2", "periodo": "01/03/2027 a 30/06/2027", "oque": "Semântica; Morfologia; Formação de palavras; Sintaxe do período simples; …."}, {"ciclo": "C3", "periodo": "01/07/2027 a 30/09/2027", "oque": "Concordância; Regência e crase; Colocação pronominal; Pontuação; …."}, {"ciclo": "C4", "periodo": "01/10/2027 a 07/11/2027", "oque": "Revisão pelo caderno de erros, provas completas e discursivas cronometradas."}]}, "filosofia": {"titulo": "Cronograma de Filosofia", "desc": "1 h por semana.", "linhas": [{"ciclo": "C1", "periodo": "21/12/2026 a 28/02/2027", "oque": "Origem da filosofia; Platão e Aristóteles."}, {"ciclo": "C2", "periodo": "01/03/2027 a 30/06/2027", "oque": "Filosofia helenística e medieval; Racionalismo e empirismo; Kant e o Iluminismo."}, {"ciclo": "C3", "periodo": "01/07/2027 a 30/09/2027", "oque": "Hegel, Marx e Nietzsche; Existencialismo e fenomenologia; Escola de Frankfurt e contemporâneos."}, {"ciclo": "C4", "periodo": "01/10/2027 a 07/11/2027", "oque": "Revisão pelo caderno de erros, provas completas e discursivas cronometradas."}]}, "sociologia": {"titulo": "Cronograma de Sociologia", "desc": "1 h por semana.", "linhas": [{"ciclo": "C1", "periodo": "21/12/2026 a 28/02/2027", "oque": "Surgimento da sociologia; Marx."}, {"ciclo": "C2", "periodo": "01/03/2027 a 30/06/2027", "oque": "Durkheim; Weber; Cultura e identidade."}, {"ciclo": "C3", "periodo": "01/07/2027 a 30/09/2027", "oque": "Brasil: formação social; Classe, gênero e raça; Estado, democracia e movimentos sociais."}, {"ciclo": "C4", "periodo": "01/10/2027 a 07/11/2027", "oque": "Revisão pelo caderno de erros, provas completas e discursivas cronometradas."}]}};
+
 (function(){
   var cards = document.getElementById('cards');
   var painel = document.getElementById('painel-crono');
-
-  document.querySelectorAll('.menu-list a').forEach(function(a){
-    a.addEventListener('click', function(ev){
-      if (ev.target.dataset.crono) return;          // o selo tem ação própria
-      document.querySelectorAll('.menu-list a').forEach(function(x){ x.classList.remove('active'); });
-      a.classList.add('active');
-    });
-  });
-
   var cardLing = document.getElementById('card-linguagens');
   var cardNat  = document.getElementById('card-natureza');
   var cardHum  = document.getElementById('card-humanas');
   var cardCron = document.getElementById('card-cronograma');
+  var titulo = document.getElementById('crono-titulo');
+  var desc = document.getElementById('crono-desc');
+  var corpo = document.querySelector('#painel-crono tbody');
+  var atual = 'matematica';
 
   function cartoesPadrao(){
     cardLing.hidden = false;
@@ -370,8 +345,18 @@
     cardCron.hidden = true;
   }
 
+  function preencher(slug){
+    var dados = CRONOGRAMAS[slug] || CRONOGRAMAS.matematica;
+    titulo.textContent = dados.titulo;
+    desc.textContent = dados.desc;
+    corpo.innerHTML = dados.linhas.map(function(l){
+      return '<tr><td>' + l.ciclo + '</td><td>' + l.periodo + '</td><td>' + l.oque + '</td></tr>';
+    }).join('');
+  }
+
   function abrirCrono(ev){
     if (ev) ev.preventDefault();
+    preencher(atual);
     cards.hidden = true;
     painel.hidden = false;
     painel.scrollIntoView({behavior:'smooth', block:'start'});
@@ -383,20 +368,21 @@
     cartoesPadrao();
   }
 
-  function vistaMatematica(ev){
-    if (ev) ev.preventDefault();
-    painel.hidden = true;
-    cards.hidden = false;
-    cardLing.hidden = true;
-    cardNat.hidden = true;
-    cardHum.hidden = true;
-    cardCron.hidden = false;
-  }
+  document.querySelectorAll('.menu-list a[data-materia]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      ev.preventDefault();
+      atual = a.dataset.materia;
+      document.querySelectorAll('.menu-list a').forEach(function(x){ x.classList.remove('active'); });
+      a.classList.add('active');
+      painel.hidden = true;
+      cards.hidden = false;
+      cardLing.hidden = true;
+      cardNat.hidden = true;
+      cardHum.hidden = true;
+      cardCron.hidden = false;
+    });
+  });
 
-  var matematica = document.querySelector('[data-materia="matematica"]');
-  if (matematica){
-    matematica.addEventListener('click', vistaMatematica);
-  }
   cardCron.addEventListener('click', abrirCrono);
   document.getElementById('voltar-crono').addEventListener('click', fecharCrono);
 
