@@ -1,42 +1,49 @@
 # Mary por Mary
 
-> Projeto **Mary por Mary**.
+Página inicial do projeto **Mary por Mary** — um espaço de perguntas e respostas
+para estudar as nove matérias do ensino médio.
 
-Este repositório reúne o projeto Mary por Mary. A descrição abaixo é um ponto de
-partida — ajuste conforme o escopo for definido.
+![Prévia da página inicial](preview.png)
 
-## Sobre
+## O que tem na página
 
-- **Nome:** Mary por Mary
-- **Status:** em construção
-- **Site:** —
+- Cabeçalho com o nome **Mary por Mary**, o selo **Perguntas e respostas** e o
+  telefone **(85) 98164-7015**.
+- Fundo animado com chuva de caracteres (estilo terminal), em canvas.
+- Menu lateral com as matérias: Português, Matemática, Física, Química, Biologia,
+  História, Geografia, Filosofia e Sociologia.
+- Três cartões de área: Linguagens, Natureza e Humanas.
+
+## Como abrir
+
+Basta abrir o arquivo `index.html` no navegador — é uma página única, sem
+dependências externas e sem build.
+
+```bash
+# clonar
+git clone https://github.com/jmarysystems/mary-por-mary.git
+cd mary-por-mary
+
+# abrir (Windows)
+start index.html
+```
 
 ## Estrutura
 
 ```
 .
+├── index.html     # página inicial completa (HTML + CSS + JS)
+├── preview.png    # captura da página
 ├── README.md
 ├── LICENSE
 └── .gitignore
 ```
 
-## Como usar
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/jmarysystems/mary-por-mary.git
-   ```
-2. Entre na pasta:
-   ```bash
-   cd mary-por-mary
-   ```
-
 ## Próximos passos
 
-- [ ] Definir o escopo do projeto
-- [ ] Descrever o público e o objetivo
-- [ ] Adicionar a primeira versão dos arquivos
-- [ ] Publicar uma página inicial
+- [ ] Criar uma página de listagem de questões por matéria
+- [ ] Ligar o menu a essas páginas
+- [ ] Publicar no GitHub Pages
 
 ## Licença
 
