@@ -172,17 +172,6 @@
   .painel-note p{margin:0; color:var(--muted); font-size:14.5px; line-height:1.6}
 
 
-  .menu-sub{
-    margin:18px 8px 8px; padding-top:14px; font-size:10.5px; font-weight:700;
-    letter-spacing:.18em; text-transform:uppercase; color:#8ea3c0;
-    border-top:1px solid rgba(255,255,255,.10);
-  }
-  .menu-list a .crono-tag{
-    margin-left:auto; font-size:11px; font-weight:700; letter-spacing:.02em;
-    background:rgba(47,111,237,.22); color:#cfe0ff; border:1px solid rgba(122,170,255,.4);
-    border-radius:999px; padding:3px 9px; transition:.14s; white-space:nowrap;
-  }
-  .menu-list a:hover .crono-tag{background:var(--blue); color:#fff; border-color:var(--blue)}
 
   .crono-panel{
     background:#fff; border:1px solid var(--line); border-radius:14px;
@@ -276,7 +265,7 @@
     <div class="menu-title"><span class="badge">&#9776;</span> Menu Mary por Mary</div>
     <div class="menu-list" id="materias">
       <a href="#" class="active"><span class="dot"></span> Português</a>
-      <a href="#" class="materia" data-materia="matematica"><span class="dot"></span> Matemática<span class="crono-tag" data-crono="1">Cronograma</span></a>
+      <a href="#" data-materia="matematica"><span class="dot"></span> Matemática</a>
       <a href="#"><span class="dot"></span> Física</a>
       <a href="#"><span class="dot"></span> Química</a>
       <a href="#"><span class="dot"></span> Biologia</a>
@@ -284,13 +273,6 @@
       <a href="#"><span class="dot"></span> Geografia</a>
       <a href="#"><span class="dot"></span> Filosofia</a>
       <a href="#"><span class="dot"></span> Sociologia</a>
-    </div>
-
-    <div class="menu-sub">Idiomas</div>
-    <div class="menu-list" id="idiomas">
-      <a href="#"><span class="dot"></span> Inglês</a>
-      <a href="#"><span class="dot"></span> Francês</a>
-      <a href="#"><span class="dot"></span> Alemão</a>
     </div>
   </aside>
 
@@ -382,8 +364,8 @@
     cards.hidden = false;
   }
 
-  var tag = document.querySelector('[data-crono]');
-  if (tag) tag.addEventListener('click', abrirCrono);
+  var matematica = document.querySelector('[data-materia="matematica"]');
+  if (matematica) matematica.addEventListener('click', abrirCrono);
   document.getElementById('voltar-crono').addEventListener('click', fecharCrono);
 })();
 </script>
