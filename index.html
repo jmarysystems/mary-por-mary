@@ -191,6 +191,12 @@
   table.crono tr:last-child td{border-bottom:none}
   table.crono td:first-child{font-weight:700; color:var(--navy); white-space:nowrap}
   table.crono td:nth-child(2){white-space:nowrap; color:var(--muted)}
+  .crono-link{
+    display:inline-block; margin-top:18px; background:var(--blue); color:#fff;
+    font-size:14px; font-weight:700; padding:11px 18px; border-radius:10px;
+    box-shadow:0 4px 14px rgba(47,111,237,.28); transition:.15s;
+  }
+  .crono-link:hover{background:#2559c4; transform:translateY(-1px)}
   .voltar{
     display:inline-block; margin-bottom:16px; font-size:13.5px; font-weight:600;
     color:var(--blue); cursor:pointer;
@@ -289,6 +295,9 @@
         </thead>
         <tbody></tbody>
       </table>
+      <a class=crono-link id=crono-completo href=matematica.html hidden>
+        Ver o cronograma completo dos livros do Poliedro &#8594;
+      </a>
     </section>
 
     <section class="cards" id="cards">
@@ -349,6 +358,8 @@ const CRONOGRAMAS = {"matematica": {"titulo": "Cronograma de Matemática", "desc
     var dados = CRONOGRAMAS[slug] || CRONOGRAMAS.matematica;
     titulo.textContent = dados.titulo;
     desc.textContent = dados.desc;
+    var extra = document.getElementById('crono-completo');
+    if (extra) extra.hidden = (slug !== 'matematica');
     corpo.innerHTML = dados.linhas.map(function(l){
       return '<tr><td>' + l.ciclo + '</td><td>' + l.periodo + '</td><td>' + l.oque + '</td></tr>';
     }).join('');
