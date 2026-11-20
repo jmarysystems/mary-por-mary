@@ -37,22 +37,14 @@
   .ocean{position:absolute; inset:0; overflow:hidden; z-index:0}
   .wave{
     position:absolute; inset:-10% -8%;
-    background:url("assets/ocean_band.jpg") center 42%/cover no-repeat;
-    will-change:transform;
+    background:url("assets/sea_loop.webp") center/cover no-repeat;
+    will-change:transform; filter:saturate(1.12);
   }
-  .wave.w1{animation:swell-a 26s ease-in-out infinite alternate}
+  .wave.w1{}
   .wave.w2{display:none}
-  @keyframes swell-a{
-    from{transform:translate3d(-2.4%, 0, 0) scale(1.06)}
-    to{transform:translate3d(2.4%, -1.4%, 0) scale(1.13)}
-  }
-  @keyframes swell-b{
-    from{transform:translate3d(2%, 1.2%, 0) scale(1.15)}
-    to{transform:translate3d(-2%, -0.6%, 0) scale(1.07)}
-  }
   .site-header::after{
     content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
-    background:linear-gradient(180deg, rgba(2,10,18,.52) 0%, rgba(2,10,18,.04) 40%, rgba(2,10,18,.42) 100%);
+    background:linear-gradient(180deg, rgba(2,10,18,.34) 0%, rgba(2,10,18,.02) 42%, rgba(2,10,18,.30) 100%);
   }
 
   .site-header{
@@ -68,11 +60,12 @@
     text-shadow:0 3px 18px rgba(0,0,0,.75);
     padding:6px 0 2px;
   }
-  .brand-text h1 em{font-style:normal; color:var(--green)}
+  .brand-text h1 em{font-style:normal; color:#fff}
   .tagline{
-    display:block; margin-top:10px; color:#d7e6f2; font-size:13.5px; font-weight:600;
-    letter-spacing:.24em; text-transform:uppercase;
-    text-shadow:0 2px 10px rgba(0,0,0,.85);
+    display:block; margin-top:6px; color:#eaf4fb;
+    font-family:'MaryScript','Pinyon Script','Great Vibes',cursive;
+    font-size:30px; font-weight:400; letter-spacing:0; line-height:1.1;
+    text-shadow:0 2px 12px rgba(0,0,0,.75);
   }
   .header-right{
     position:absolute; right:26px; top:50%; transform:translateY(-50%);
@@ -99,9 +92,6 @@
   .socials a:hover{transform:translateY(-2px); color:var(--blue)}
   .socials svg{width:19px; height:19px; fill:currentColor}
 
-  .dashed{
-    height:0; border-top:4px dashed #f2b705; background:#04070c;
-  }
 
   /* ---------- faixa de navegação ---------- */
   .topnav{
@@ -234,8 +224,6 @@
     </div>
   </div>
 </header>
-
-<div class="dashed"></div>
 
 <nav class="topnav">
   <a href="#" class="on"><span class="home-ico">&#8962;</span> Home</a>
